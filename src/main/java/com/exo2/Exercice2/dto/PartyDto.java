@@ -19,6 +19,6 @@ public class PartyDto {
     private Long id;
     private String name;
     private Timestamp date;
-    private int place_nb;
+    private int placeNb;
     private int price;
 }

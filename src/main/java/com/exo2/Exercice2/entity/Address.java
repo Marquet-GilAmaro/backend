@@ -8,30 +8,26 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 @Entity
-@Table(name = "party")
+@Table(name = "address", indexes = @Index(name = "idx_address_city", columnList = "city"))
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Party {
+public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(nullable = false, length = 100)
-    private String name;
+    @Column(name = "city", nullable = false)
+    private String city;
 
-    @Column(nullable = false, length = 50)
-    private Timestamp date;
+    @Column(name = "postal_code", nullable = false)
+    private int postalCode;
 
-    @Column(nullable = false, length = 50)
-    private int placeNb;
-
-    @Column(nullable = true, length = 50)
-    private int price;
+    @Column(name = "locality", nullable = false)
+    private String locality;
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
@@ -40,6 +36,4 @@ public class Party {
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private Timestamp updatedAt;
-
-    //TODO: Add foreign key
 }

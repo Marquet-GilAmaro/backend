@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AdresseDto {
+public class AddressDto {
     @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private Long id;
-    private String ville;
-    private String complementAdresse;
-    private int codePostal;
+    private String city;
+    private int postalCode;
+    private String locality;
 }

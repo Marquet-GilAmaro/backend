@@ -1,7 +1,7 @@
 package com.exo2.Exercice2.controller;
 
-import com.exo2.Exercice2.dto.AdresseDto;
-import com.exo2.Exercice2.service.AdresseService;
+import com.exo2.Exercice2.dto.AddressDto;
+import com.exo2.Exercice2.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
@@ -10,28 +10,28 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/adresses")
-public class AdresseController {
+@RequestMapping("/address")
+public class AddressController {
     @Autowired
-    private AdresseService adresseService;
+    private AddressService addressService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<AdresseDto> findById(@PathVariable Long id)
+    public ResponseEntity<AddressDto> findById(@PathVariable Long id)
     {
-        return ResponseEntity.ok(adresseService.findById(id));
+        return ResponseEntity.ok(addressService.findById(id));
     }
 
     @GetMapping
-    public ResponseEntity<List<AdresseDto>> findAll(@RequestParam(defaultValue = "0") int page,
+    public ResponseEntity<List<AddressDto>> findAll(@RequestParam(defaultValue = "0") int page,
                                                     @RequestParam(defaultValue = "5") int size)
     {
-        return ResponseEntity.ok(adresseService.findAll(PageRequest.of(page, size)));
+        return ResponseEntity.ok(addressService.findAll(PageRequest.of(page, size)));
     }
 
     @GetMapping("/findBy")
-    public ResponseEntity<List<AdresseDto>> findBy(@RequestParam String ville,
+    public ResponseEntity<List<AddressDto>> findBy(@RequestParam String ville,
                                                    @RequestParam(defaultValue = "0") int page,
                                                    @RequestParam(defaultValue = "5") int size) {
-        return ResponseEntity.ok(adresseService.findByVille(ville, PageRequest.of(page, size)));
+        return ResponseEntity.ok(addressService.findByVille(ville, PageRequest.of(page, size)));
     }
 }

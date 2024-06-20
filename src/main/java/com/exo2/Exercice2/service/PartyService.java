@@ -49,8 +49,8 @@ public class PartyService {
                 if (Objects.nonNull(existingParty.getDate())) {
                     party.setDate(existingParty.getDate());
                 }
-                if (Objects.nonNull(existingParty.getPlace_nb())) {
-                    party.setPlace_nb(existingParty.getPlace_nb());
+                if (Objects.nonNull(existingParty.getPlaceNb())) {
+                    party.setPlaceNb(existingParty.getPlaceNb());
                 }
                 if(Objects.nonNull(existingParty.getPrice()) || existingParty.getPrice() != 0) {
                     party.setPrice(existingParty.getPrice());

@@ -30,6 +30,6 @@ public class Ecole {
     private List<Etudiant> etudiants;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "adresse_id")
-    private Adresse adresse;
+    @JoinColumn(name = "address_id")
+    private Address address;
 }
