@@ -6,5 +6,5 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AddressRepository extends JpaRepository<Address, Long> {
-    Page<Address> findAddressByVille(String ville, Pageable pageable);
+    Page<Address> findAddressByCity(String city, Pageable pageable);
 }

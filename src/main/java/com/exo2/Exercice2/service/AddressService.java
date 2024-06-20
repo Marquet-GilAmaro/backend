@@ -25,7 +25,7 @@ public class AddressService {
         return addressMapper.toDto(addressRepository.findById(id).get());
     }
 
-    public List<AddressDto> findByVille(String ville, Pageable pageable) {
-        return addressRepository.findAddressByVille(ville, pageable).map(addressMapper::toDto).getContent();
+    public List<AddressDto> findByVille(String city, Pageable pageable) {
+        return addressRepository.findAddressByCity(city, pageable).map(addressMapper::toDto).getContent();
     }
 }
