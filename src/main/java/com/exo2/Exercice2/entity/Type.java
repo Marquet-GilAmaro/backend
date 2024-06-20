@@ -11,7 +11,10 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
-@Table(name = "type")
+@Table(name = "type",
+        indexes = {
+                @Index(name = "idx_type_title", columnList = "title")
+        })
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

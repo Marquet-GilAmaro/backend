@@ -10,7 +10,13 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "address", indexes = @Index(name = "idx_address_city", columnList = "city"))
+@Table(name = "address",
+        indexes = {
+                @Index(name = "idx_address_city", columnList = "city"),
+                @Index(name = "idx_address_postal_code", columnList = "postal_code"),
+                @Index(name = "idx_address_locality", columnList = "locality")
+        }
+)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

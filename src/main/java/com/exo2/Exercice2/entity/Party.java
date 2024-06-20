@@ -11,7 +11,10 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
-@Table(name = "party")
+@Table(name = "party",
+        indexes = {
+                @Index(name = "idx_party_date", columnList = "date")
+        })
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,7 +33,7 @@ public class Party {
     @Column(nullable = false, length = 50)
     private int placeNb;
 
-    @Column(nullable = true, length = 50)
+    @Column(length = 50)
     private int price;
 
     @CreationTimestamp

@@ -12,7 +12,11 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
-@Table(name = "`user`")
+@Table(name = "`user`",
+        indexes = {
+                @Index(name = "idx_user_firstname", columnList = "firstname"),
+                @Index(name = "idx_user_lastname", columnList = "lastname"),
+        })
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
