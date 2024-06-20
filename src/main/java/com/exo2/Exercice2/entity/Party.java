@@ -41,5 +41,6 @@ public class Party {
     @Column(name = "updated_at", nullable = false)
     private Timestamp updatedAt;
 
-    //TODO: Add foreign key
+    @OneToMany(mappedBy = "party", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Registered> registered;
 }
