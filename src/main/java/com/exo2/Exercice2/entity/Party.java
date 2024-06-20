@@ -13,6 +13,7 @@ import java.util.List;
 @Entity
 @Table(name = "party",
         indexes = {
+                @Index(name = "idx_party_name", columnList = "name"),
                 @Index(name = "idx_party_date", columnList = "date")
         })
 @Data
