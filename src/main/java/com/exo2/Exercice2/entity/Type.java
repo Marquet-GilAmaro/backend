@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Table(name = "type")
@@ -31,5 +32,6 @@ public class Type {
     @Column(name = "updated_at", nullable = false)
     private Timestamp updatedAt;
 
-    //TODO: Add foreign key
+    @OneToMany(mappedBy = "type", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Party> parties;
 }
