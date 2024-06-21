@@ -12,9 +12,6 @@ import lombok.NoArgsConstructor;
 public class RegisteredDto {
     @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     private UserPartyComposite id;
-    private String email;
-    private String password;
-    private String firstName;
-    private String lastName;
-    private Integer age;
+    private Boolean isOrganizer;
+    private int rating;
 }

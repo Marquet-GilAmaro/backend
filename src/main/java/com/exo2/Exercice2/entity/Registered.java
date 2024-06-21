@@ -11,7 +11,10 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "registered")
+@Table(name = "registered",
+        indexes = {
+                @Index(name = "idx_registered_rating", columnList = "rating")
+        })
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,6 +35,9 @@ public class Registered {
 
     @Column(name = "is_organizer", nullable = false, columnDefinition = "BOOLEAN DEFAULT FALSE")
     private Boolean isOrganizer;
+
+    @Column(name = "rating") // Only for isOrganizer = false
+    private int rating;
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
