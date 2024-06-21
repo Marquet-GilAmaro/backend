@@ -39,6 +39,7 @@ public class InterestService {
         return interestMapper.toDto(interestRepository.save(interestMapper.toEntity(interestDto)));
     }
 
+    @CacheEvict(value = "interests", allEntries = true)
    public InterestDto update(Long id, InterestDto typeDto) {
     return interestRepository.findById(id)
             .map(existingType -> {

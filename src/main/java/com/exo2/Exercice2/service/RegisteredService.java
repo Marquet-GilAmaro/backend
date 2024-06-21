@@ -34,6 +34,7 @@ public class RegisteredService {
         return registeredMapper.toDto(registeredRepository.save(registeredMapper.toEntity(registeredDto)));
     }
 
+    @CacheEvict(value = "registered", allEntries = true)
     public RegisteredDto update(UserPartyComposite id, RegisteredDto registeredDto) {
         Registered registered = registeredRepository.findById(id).orElse(null);
         if (registered == null) {

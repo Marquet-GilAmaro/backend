@@ -1,6 +1,7 @@
 package com.exo2.Exercice2.service;
 
 import com.exo2.Exercice2.dto.TypeDto;
+import com.exo2.Exercice2.dto.UserDto;
 import com.exo2.Exercice2.entity.Type;
 import com.exo2.Exercice2.mapper.TypeMapper;
 import com.exo2.Exercice2.repository.TypeRepository;
@@ -39,18 +40,15 @@ public class TypeService {
         return typeMapper.toDto(typeRepository.save(typeMapper.toEntity(typeDto)));
     }
 
-   public TypeDto update(Long id, TypeDto typeDto) {
-    return typeRepository.findById(id)
-            .map(existingType -> {
-                Type type = typeMapper.toEntity(typeDto);
-                type.setId(id);
-                if (Objects.nonNull(existingType.getTitle())) {
-                    type.setTitle(existingType.getTitle());
-                }
-                return typeMapper.toDto(typeRepository.save(type));
-            })
-            .orElse(null);
-}
+    @CacheEvict(value = "types", allEntries = true)
+    public TypeDto update(Long id, TypeDto typeDto) {
+        return typeRepository.findById(id)
+                .map(existingUser -> {
+                    typeDto.setId(id);
+                    return typeMapper.toDto(typeRepository.save(typeMapper.toEntity(typeDto)));
+                })
+                .orElse(null);
+    }
 
     @CacheEvict(value = {"types"}, allEntries = true)
     public void delete(Long id) {

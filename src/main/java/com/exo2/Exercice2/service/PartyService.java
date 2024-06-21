@@ -1,8 +1,6 @@
 package com.exo2.Exercice2.service;
 
-import com.exo2.Exercice2.dto.EtudiantDto;
 import com.exo2.Exercice2.dto.PartyDto;
-import com.exo2.Exercice2.entity.Etudiant;
 import com.exo2.Exercice2.entity.Party;
 import com.exo2.Exercice2.mapper.PartyMapper;
 import com.exo2.Exercice2.repository.PartyRepository;
@@ -41,6 +39,7 @@ public class PartyService {
         return partyMapper.toDto(partyRepository.save(partyMapper.toEntity(partyDto)));
     }
 
+    @CacheEvict(value = "partys", allEntries = true)
    public PartyDto update(Long id, PartyDto partyDto) {
     return partyRepository.findById(id)
             .map(existingParty -> {
